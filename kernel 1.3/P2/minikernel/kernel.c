@@ -1,11 +1,4 @@
-/*
- *  kernel/kernel.c
- *
- *  Minikernel. Versi髇 1.0
- *
- *  Fernando P閞ez Costoya
- *
- */
+
 
 /*
  *
@@ -23,7 +16,7 @@
  */
 
 /*
- * Funci髇 que inicia la tabla de procesos
+ * Funci贸n que inicia la tabla de procesos
  */
 static void iniciar_tabla_proc(){
 	int i;
@@ -42,7 +35,7 @@ static void muestra_lista(lista_BCPs *lista){
 
 
 /*
- * Funci髇 que busca una entrada libre en la tabla de procesos
+ * Funci贸n que busca una entrada libre en la tabla de procesos
  */
 static int buscar_BCP_libre(){
 	int i;
@@ -130,14 +123,14 @@ static void espera_int(){
 
 	printk("-> NO HAY LISTOS. ESPERA INT\n");
 
-	/* Baja al m韓imo el nivel de interrupci髇 mientras espera */
+	/* Baja al m铆nimo el nivel de interrupci贸n mientras espera */
 	nivel=fijar_nivel_int(NIVEL_1);
 	halt();
 	fijar_nivel_int(nivel);
 }
 
 /*
- * Funci髇 de planificacion que implementa un algoritmo FIFO.
+ * Funci贸n de planificacion que implementa un algoritmo FIFO.
  */
 static BCP * planificador(){
 	while (lista_listos.primero==NULL)
@@ -196,7 +189,7 @@ static void liberar_proceso(){
 	actualizar_padre(&lista_dormidos);
 	actualizar_padre(&lista_espera);
 	cambio_proceso(NULL);
-        return; /* no deber韆 llegar aqui */
+        return; /* no deber铆a llegar aqui */
 }
 
 /*
@@ -222,7 +215,7 @@ static void exc_arit(){
 	printk("-> EXCEPCION ARITMETICA EN PROC %d\n", p_proc_actual->id);
 	liberar_proceso();
 
-        return; /* no deber韆 llegar aqui */
+        return; /* no deber铆a llegar aqui */
 }
 
 /*
@@ -237,7 +230,7 @@ static void exc_mem(){
 	printk("-> EXCEPCION DE MEMORIA EN PROC %d\n", p_proc_actual->id);
 	liberar_proceso();
 
-        return; /* no deber韆 llegar aqui */
+        return; /* no deber铆a llegar aqui */
 }
 
 /*
@@ -460,7 +453,7 @@ int sis_terminar_proceso(){
 
 	liberar_proceso();
 
-        return 0; /* no deber韆 llegar aqui */
+        return 0; /* no deber铆a llegar aqui */
 }
 /*
 retorna id del  proceso
@@ -481,7 +474,7 @@ int sis_dormir() {
 }
 /*
  *
- * Rutina de inicializaci髇 invocada en arranque
+ * Rutina de inicializaci贸n invocada en arranque
  *
  */
 
